@@ -1,0 +1,7 @@
+create table funcionarios (
+    id_func int auto_increment,
+	nome varchar(50) not null,
+	cpf varchar(15) not null unique,
+	endereco varchar(50) not null,
+	
+	primary key (id_func));
