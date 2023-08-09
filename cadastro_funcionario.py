@@ -10,21 +10,28 @@ resp = "s"
 
 while resp =="s":
 
-    print("Cadastro de funcionarios")
+    while True:
+        
+        try:
 
-    nome = input ("Digite o nome:")
-    cpf = input ("Digite o cpf:")
-    endereco = input ("Digite o endereço:")
+            print("Cadastro de funcionarios")
 
-    #Obtendo o cursor,o cursor permite que façamos inserções, consultas, atualizações e deleções no banco.
-    cursor =  conexao.cursor()
+            nome = input ("Digite o nome:")
+            cpf = input ("Digite o cpf:")
+            endereco = input ("Digite o endereço:")
 
-    #executando a inserção de dados na tabela funcionarios
-    cursor.execute("insert into funcionarios(nome,cpf,endereco) values(%s,%s,%s);",(nome,cpf,endereco))
+            #Obtendo o cursor,o cursor permite que façamos inserções, consultas, atualizações e deleções no banco.
+            cursor =  conexao.cursor()
 
-    #Confirmando a transação
-    conexao.commit()
+            #executando a inserção de dados na tabela funcionarios
+            cursor.execute("insert into funcionarios(nome,cpf,endereco) values(%s,%s,%s);",(nome,cpf,endereco))
 
+            #Confirmando a transação
+            conexao.commit()
+            break;
+        except:
+            print("Voce digitou alguma informaçao invalida! revise os dados.")
+            
     resp = input("Deseja cadastrar um novo funcionario? 'S' para sim e 'N' para não.").lower()
 
 #Fechando o cursor e a conexão
